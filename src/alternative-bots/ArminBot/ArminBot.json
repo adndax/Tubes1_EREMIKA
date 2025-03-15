@@ -1,0 +1,14 @@
+{
+  "name": "ArminBot",
+  "version": "1.0",
+  "authors": [
+    "hai"
+  ],
+  "description": "fill this later!",
+  "homepage": "",
+  "countryCodes": [
+    "id"
+  ],
+  "platform": ".Net 8.0",
+  "programmingLang": "C# 10.0"
+}
