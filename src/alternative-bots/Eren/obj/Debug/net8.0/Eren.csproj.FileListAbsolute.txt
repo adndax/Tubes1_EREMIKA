@@ -1,0 +1,5 @@
+D:\Robo\tubes1-if2211-starter-pack-1.0\sample-bots-csharp-0.30.0\Eren\obj\Debug\net8.0\Eren.csproj.AssemblyReference.cache
+D:\Robo\tubes1-if2211-starter-pack-1.0\sample-bots-csharp-0.30.0\Eren\obj\Debug\net8.0\Eren.GeneratedMSBuildEditorConfig.editorconfig
+D:\Robo\tubes1-if2211-starter-pack-1.0\sample-bots-csharp-0.30.0\Eren\obj\Debug\net8.0\Eren.AssemblyInfoInputs.cache
+D:\Robo\tubes1-if2211-starter-pack-1.0\sample-bots-csharp-0.30.0\Eren\obj\Debug\net8.0\Eren.AssemblyInfo.cs
+D:\Robo\tubes1-if2211-starter-pack-1.0\sample-bots-csharp-0.30.0\Eren\obj\Debug\net8.0\Eren.csproj.CoreCompileInputs.cache
