@@ -1,10 +1,10 @@
 {
-  "name": "ArminBot",
+  "name": "Armin",
   "version": "1.0",
   "authors": [
-    "hai"
+    "Naomi Risaka"
   ],
-  "description": "fill this later!",
+  "description": "Armin bot moves around in an oval motion while shooting at enemies greedily.",
   "homepage": "",
   "countryCodes": [
     "id"

@@ -1,0 +1,46 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{827E0CD3-B72D-47B6-A68D-7590B98EB39B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "alternative-bots", "alternative-bots", "{A3963A42-BA02-1665-FEE3-9A6867D26CB0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Armin", "src\alternative-bots\Armin\Armin.csproj", "{C7F07A5F-4C25-0363-5D37-E49FAFB3ACC7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eren", "src\alternative-bots\Eren\Eren.csproj", "{E3D6D457-4DFA-F4CD-02CC-FA6DB9800661}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MikasaBot", "src\alternative-bots\Mikasa\MikasaBot.csproj", "{A89FAAE5-1B29-B41E-2C3B-8A7EBDE5EF51}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C7F07A5F-4C25-0363-5D37-E49FAFB3ACC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7F07A5F-4C25-0363-5D37-E49FAFB3ACC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7F07A5F-4C25-0363-5D37-E49FAFB3ACC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7F07A5F-4C25-0363-5D37-E49FAFB3ACC7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3D6D457-4DFA-F4CD-02CC-FA6DB9800661}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3D6D457-4DFA-F4CD-02CC-FA6DB9800661}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3D6D457-4DFA-F4CD-02CC-FA6DB9800661}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3D6D457-4DFA-F4CD-02CC-FA6DB9800661}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A89FAAE5-1B29-B41E-2C3B-8A7EBDE5EF51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A89FAAE5-1B29-B41E-2C3B-8A7EBDE5EF51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A89FAAE5-1B29-B41E-2C3B-8A7EBDE5EF51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A89FAAE5-1B29-B41E-2C3B-8A7EBDE5EF51}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A3963A42-BA02-1665-FEE3-9A6867D26CB0} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
+		{C7F07A5F-4C25-0363-5D37-E49FAFB3ACC7} = {A3963A42-BA02-1665-FEE3-9A6867D26CB0}
+		{E3D6D457-4DFA-F4CD-02CC-FA6DB9800661} = {A3963A42-BA02-1665-FEE3-9A6867D26CB0}
+		{A89FAAE5-1B29-B41E-2C3B-8A7EBDE5EF51} = {A3963A42-BA02-1665-FEE3-9A6867D26CB0}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {411F4E1D-76B3-4E0A-A854-15CB0100A929}
+	EndGlobalSection
+EndGlobal
