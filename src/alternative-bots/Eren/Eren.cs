@@ -5,12 +5,17 @@ using Robocode.TankRoyale.BotApi.Events;
 
 public class Eren : Bot
 {
+    double arenaWidth, arenaHeight;
     double sideLength;
+    int step = 0;
 
     static void Main()
     {
         new Eren().Start();
     }
+
+    private Random random = new Random();
+    private int moveCounter = 0;
 
     Eren() : base(BotInfo.FromFile("Eren.json")) { }
 
@@ -20,11 +25,15 @@ public class Eren : Bot
         BodyColor = Color.Black;
         TurretColor = Color.Black;
         RadarColor = Color.Orange;
-        BulletColor = Color.lime;
-        ScanColor = Color.lime;
+        BulletColor = Color.Red;
+        ScanColor = Color.Red;
 
-        // Tentukan panjang sisi persegi (menggunakan 70% dari ukuran terkecil arena)
-        sideLength = Math.Min(ArenaWidth,ArenaHeight) * 0.7;
+        // Dapatkan ukuran arena
+        arenaWidth = ArenaWidth;
+        arenaHeight = ArenaHeight;
+
+        // Tentukan panjang sisi persegi (menggunakan 80% dari ukuran terkecil arena)
+        sideLength = Math.Min(arenaWidth, arenaHeight) * 0.7;
 
 
         while (IsRunning)
@@ -35,9 +44,34 @@ public class Eren : Bot
 
     private void MoveInSquare()
     {
-        // Gerakan dalam bentuk persegi
-        Forward(sideLength);
-        TurnRight(60); // Belok kanan 60 derajat
+        // Randomize spin direction and angle
+            int turnDirection = random.Next(0, 2) == 0 ? 1 : -1;  // 1 = Left, -1 = Right
+            int spinAngle = random.Next(5, 45);
+
+            // Set random spin movement
+            SetTurnLeft(turnDirection * 10000);
+            MaxSpeed = random.Next(5, 7); // Kecepatan random untuk variasi
+            Forward(500);
+
+            moveCounter++;
+
+            // Setiap beberapa gerakan, pindah posisi secara acak
+            if (moveCounter % 5 == 0)
+            {
+                RandomMove();
+            }
+    }
+
+    private void RandomMove()
+    {
+        int randomAngle = random.Next(0, 360);      // Putar arah secara acak
+        double randomDistance = 300; // Bergerak maju jarak acak
+
+        TurnRight(randomAngle);
+        Forward(randomDistance);
+
+        // Tambahkan variasi putar balik setelah berpindah posisi
+        //TurnRight(random.Next(45, 90));
     }
 
     public override void OnScannedBot(ScannedBotEvent e)
@@ -51,7 +85,7 @@ public class Eren : Bot
     {
         // Jika ditembak, ubah arah untuk menghindari pola tetap
         TurnRight(90);
-        Forward(100);
+        Forward(50);
     }
 
     public override void OnHitBot(HitBotEvent e)
@@ -63,7 +97,7 @@ public class Eren : Bot
 
     public override void OnHitWall(HitWallEvent e)
     {
-        Back(20); // Mundur sedikit
+        Back(30); // Mundur sedikit
         TurnRight(45); // Ubah arah agar tidak terjebak
     }
 }
