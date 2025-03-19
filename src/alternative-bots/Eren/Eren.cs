@@ -64,7 +64,7 @@ public class Eren : Bot
 
         // Menentukan jarak untuk maju dengan mempertimbangkan posisi terhadap dinding
         double moveDistance = 500;
-        moveDistance = CheckWallSmoothing(moveDistance);
+        CheckWallSmoothing();
         Forward(moveDistance); 
 
         // Setiap 5 kali menjalankan fungsi MoveInCircleRandom dilakukan perubahan posisi secara acak
@@ -83,59 +83,45 @@ public class Eren : Bot
 
         // Putar ke arah acak dan memeriksa jarak dari dinding kemudian maju sesuai kondisi
         TurnRight(randomAngle);
-        moveDistance = CheckWallSmoothing(moveDistance);
+        CheckWallSmoothing();
         Forward(moveDistance);
     }
 
     // Fungsi untuk menghhindari tabrakan dengan dinding
-    private double CheckWallSmoothing(double distance)
+    private void CheckWallSmoothing()
     {
         double x = X;
         double y = Y;
         arenaWidth = ArenaWidth;
         arenaHeight = ArenaHeight;
         
-        double buffer = 50;  // Jarak minimum dari dinding
-        double safeDistance = distance;
+        double buffer = 10;  // Jarak minimum dari dinding
 
         // Cek jarak aman dari dinding kiri
         if (x < buffer)
         {
-            safeDistance = Math.Min(safeDistance, x - 20);
+            Back(50);
             TurnRight(45);  // Ubah sudut agar menjauhi dinding
-            Forward(50);
         }
         // Cek jarak aman dari dinding kanan
         if (x > arenaWidth - buffer)
         {
-            safeDistance = Math.Min(safeDistance, arenaWidth - x - 20);
+            Back(50);
             TurnRight(45);  // Ubah sudut agar menjauhi dinding
-            Forward(50);
+            //Forward(50);
         }
         // Cek jarak aman dari dinding bawah
         if (y < buffer)
         {
-            safeDistance = Math.Min(safeDistance, y - 20);
+            Back(50);
             TurnRight(45);  // Ubah sudut agar menjauhi dinding
-            Forward(50);
         }
         // Cek jarak aman dari dinding atas
         if (y > arenaHeight - buffer)
         {
-            safeDistance = Math.Min(safeDistance, arenaHeight - y - 20);
+            Back(50);
             TurnRight(45);  // Ubah sudut agar menjauhi dinding
-            Forward(50);
         }
-
-        // Jika jarak aman terlalu kecil, batasi antara 20-40
-        if (safeDistance < 20)
-        {
-            Back(20)
-            TurnRight(50);  // Ubah sudut agar menjauhi dinding
-            Forward(50);
-        }
-
-        return safeDistance;
     }
 
     // Menembak ketika mendeteksi bot lain berdasarkan jarak terhadap lawan
@@ -146,28 +132,20 @@ public class Eren : Bot
         SetFire(firepower);
     }
 
-    // Menghindar ketika terkena tembakan
-    public override void OnHitByBullet(HitByBulletEvent e)
-    {
-        // Jika ditembak, ubah arah untuk menghindari pola tetap
-        TurnRight(90);
-        double moveDistance = 100;
-        moveDistance = CheckWallSmoothing(moveDistance);
-        Forward(moveDistance);
-    }
-
-    // Menghindar ketika terkena tembakan
+    // Menyerang dan menjauh ketika tertabrak bot 
     public override void OnHitBot(HitBotEvent e)
     {    
         SetFire(3); // Tembak dengan kekuatan maksimal
-        Back(20); // Mundur sedikit untuk menghindari tabrakan terus-menerus
+        Back(30); // Mundur sedikit untuk menghindari tabrakan terus-menerus
         TurnRight(45);
+        Forward(30);
     }
 
     // Menangani tabrakan dengan dinding
     public override void OnHitWall(HitWallEvent e)
     {
-        Back(30); // Mundur sedikit
-        TurnRight(45); // Ubah arah agar tidak terjebak
+        Back(50); // Mundur sedikit
+        TurnRight(90); // Ubah arah agar tidak terjebak
+        Forward(100); // Maju
     }
 }
