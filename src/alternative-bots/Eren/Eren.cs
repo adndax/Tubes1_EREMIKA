@@ -20,7 +20,7 @@ public class Eren : Bot
     double arenaWidth, arenaHeight;         // Ukuran arena
     private Random random = new Random();   // Generator angka acak
     private int moveCounter = 0;            // Hitung jumlah gerakan acak
-    int turnDirection = 1;
+    //private int turnDirection;
 
     //Main method untuk memulai bot
     static void Main()
@@ -155,11 +155,7 @@ public class Eren : Bot
     public void TurnToFaceTarget(double x, double y)
     {
         var bearing = BearingTo(x, y);
-        if (bearing >= 0)
-            turnDirection = 1;
-        else
-            turnDirection = -1;
-
+        int turnDirection = bearing >= 0 ? 1 : -1;
         TurnLeft(bearing);
     }
 }

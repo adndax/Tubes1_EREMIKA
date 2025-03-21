@@ -3,6 +3,19 @@ using System.Drawing;
 using Robocode.TankRoyale.BotApi;
 using Robocode.TankRoyale.BotApi.Events;
 
+// ------------------------------------------------------------------
+// Armin Bot
+// ------------------------------------------------------------------
+// Armin bot made for Robocode by EREMIKA.
+// Ported to Robocode Tank Royale by EREMIKA.
+//
+// Bot ini bergerak dengan pola melingkar serta dapat menghindar 
+// dari lawan dengan pergerakan yang acak. 
+// Bot menggunakan strategi algoritma Greedy dalam penyerangan.
+// Armin bot menembak bot musuh dengan frekuensi sebanyak mungkin
+// dan selalu menembak dengan kekuatan maksimum.
+// ------------------------------------------------------------------
+
 public class Armin : Bot {
     static void Main(string[] args) => new Armin().Start();
 
