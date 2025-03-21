@@ -20,6 +20,7 @@ public class Eren : Bot
     double arenaWidth, arenaHeight;         // Ukuran arena
     private Random random = new Random();   // Generator angka acak
     private int moveCounter = 0;            // Hitung jumlah gerakan acak
+    int turnDirection = 1;
 
     //Main method untuk memulai bot
     static void Main()
@@ -104,20 +105,20 @@ public class Eren : Bot
             TurnRight(45);  // Ubah sudut agar menjauhi dinding
         }
         // Cek jarak aman dari dinding kanan
-        if (x > arenaWidth - buffer)
+        else if (x > arenaWidth - buffer)
         {
             Back(50);
             TurnRight(45);  // Ubah sudut agar menjauhi dinding
             //Forward(50);
         }
         // Cek jarak aman dari dinding bawah
-        if (y < buffer)
+        else if (y < buffer)
         {
             Back(50);
             TurnRight(45);  // Ubah sudut agar menjauhi dinding
         }
         // Cek jarak aman dari dinding atas
-        if (y > arenaHeight - buffer)
+        else if (y > arenaHeight - buffer)
         {
             Back(50);
             TurnRight(45);  // Ubah sudut agar menjauhi dinding
@@ -135,17 +136,30 @@ public class Eren : Bot
     // Menyerang dan menjauh ketika tertabrak bot 
     public override void OnHitBot(HitBotEvent e)
     {    
-        SetFire(3); // Tembak dengan kekuatan maksimal
+        TurnToFaceTarget(e.X, e.Y); //Mengarahkan arah tembakan ke lawan
+        Fire(3); // Tembak dengan kekuatan maksimal
         Back(30); // Mundur sedikit untuk menghindari tabrakan terus-menerus
         TurnRight(45);
-        Forward(30);
+        Forward(30);   
     }
-
+    
     // Menangani tabrakan dengan dinding
     public override void OnHitWall(HitWallEvent e)
     {
         Back(50); // Mundur sedikit
         TurnRight(90); // Ubah arah agar tidak terjebak
         Forward(100); // Maju
+    }
+
+    // Mengarahkan arah tembakan ke lawan
+    public void TurnToFaceTarget(double x, double y)
+    {
+        var bearing = BearingTo(x, y);
+        if (bearing >= 0)
+            turnDirection = 1;
+        else
+            turnDirection = -1;
+
+        TurnLeft(bearing);
     }
 }
