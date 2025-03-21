@@ -14,49 +14,39 @@ using Robocode.TankRoyale.BotApi.Events;
 // -------------------------------------------------------------------
 
 // class MikasaBot sebagai subclass dari class Bot
-public class Mikasa : Bot
+public class MikasaBot : Bot
 {
     // arah putaran bot, dengan default 1, yaitu putaran searah jarum jam
-    int turnDirection = 1;
+    int turnDirection = 1; 
 
     // jumlah iterasi dalam mode evasive maneuver (penghindaran)
-    int turnCounter = 0;
+    int turnCounter = 0; 
 
     //  konstruktor untuk menginisialisasi bot dengan konfigurasi dan file MikasaBot.json
-    public Mikasa() : base(BotInfo.FromFile("Mikasa.json")) { }
+    public MikasaBot() : base(BotInfo.FromFile("MikasaBot.json")) { }
 
     // main method untuk memulai bot
     static void Main(string[] args)
     {
-        new Mikasa().Start();
+        new MikasaBot().Start();
     }
 
     // method utama yang dijalankan selama bot aktif
     public override void Run()
     {
-
-        // memberi warna pada body, turret, dan radar bot
+        // warna 
         BodyColor = Color.Red;
-        TurretColor = Color.Cyan;
-        RadarColor = Color.Lime;
+        TurretColor = Color.Black;
+        RadarColor = Color.Black;
+        ScanColor = Color.Black;
+        BulletColor = Color.Red;
         
         // loop pergerakan utama yang berjalan selama bot aktif
         while (IsRunning)
         {
-
-            // jika energi kurang dari 30, bot melakukan penghindaran
-            if (Energy < 30)
-            {
-                EvasiveManeuver();
-            }
-
-            // jika energi >= 30, bot akan terus bergerak maju secara memutar terus menerus
-            else
-            {
-                SetTurnLeft(10_000);
-                Forward(10_000);
-                MaxSpeed = 4;
-            }
+            SetTurnLeft(10_000);
+            MaxSpeed = 5;
+            Forward(10_000);
         }
     }
 
@@ -102,7 +92,6 @@ public class Mikasa : Bot
     // method untuk memutar bot agar menghadap ke posisi bot lawan
     private void TurnToFaceTarget(double x, double y)
     {
-
         // menghitung arah sudut untuk menghadap ke bot lawan
         var bearing = BearingTo(x, y);
 
@@ -113,26 +102,4 @@ public class Mikasa : Bot
         TurnLeft(bearing);
     }
 
-    // method untuk melakukan penghindaran ketika bot dalam energi rendah
-    private void EvasiveManeuver()
-    {
-
-        // melakukan increment terhadap turnCounter ketika method dijalankan
-        turnCounter++;
-
-        // melakukan gerakan penghindaran berdasarkan jumlah iterasi dalam mode evasive maneuver (penghindaran)
-        if (turnCounter % 64 == 0)
-        {
-            TurnRate = 0;  
-            TargetSpeed = 4; 
-        }
-        if (turnCounter % 64 == 32)
-        {
-            TargetSpeed = -6; 
-        }
-        
-        TurnRate = 5; 
-        MaxSpeed = 3; 
-        Forward(50);  
-    }
 }
