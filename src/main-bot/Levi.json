@@ -1,0 +1,16 @@
+{
+  "name": "Levi",
+  "version": "1.0",
+  "authors": [
+    "Naomi Risaka", 
+    "Heleni Gratia",
+    "Adinda Putri"
+  ],
+  "description": "LEVIIII DESC!",
+  "homepage": "",
+  "countryCodes": [
+    "id"
+  ],
+  "platform": ".Net 8.0",
+  "programmingLang": "C# 10.0"
+}
