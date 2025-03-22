@@ -85,8 +85,6 @@ public class MikasaBot : Bot
             Fire(1);
         else if (e.Energy > 2)
             Fire(.5);
-        else if (e.Energy > .4)
-            Fire(.1);
     }
 
     // method untuk memutar bot agar menghadap ke posisi bot lawan
