@@ -2,9 +2,7 @@
     "name": "Eren",
     "version": "1.0",
     "authors": [
-      "Adinda Putri",
-      "Heleni Gratia",
-      "Naomi Risaka"
+      "Heleni Gratia"
     ],
     "description": "So easy bruh, this is yeager's power! MWAHAHAHA",
     "homepage": "",
@@ -12,7 +10,7 @@
       "jpn",
       "idn"
     ],
-    "platform": ".Net 6.0",
+    "platform": ".Net 8.0",
     "programmingLang": "C# 10.0"
   }
   
