@@ -32,11 +32,11 @@ public class Mikasa : Bot
     public override void Run()
     {
         // Set warna
-        BodyColor = Color.Black;
+        BodyColor = Color.Red;
         TurretColor = Color.Black;
-        RadarColor = Color.Orange;
-        BulletColor = Color.Cyan;
-        ScanColor = Color.Cyan;
+        RadarColor = Color.Black;
+        ScanColor = Color.Black;
+        BulletColor = Color.Red;
 
         // Pergi ke dinding terdekat
         MoveToWall();
@@ -72,13 +72,6 @@ public class Mikasa : Bot
         // Posisikan turret agar siap melakukan scan
         TurnGunRight(90);
         TurnRight(90);
-    }
-
-     private void MoveAlongWall()
-    {
-        double shiftDistance = 200 + random.Next(100);
-        TurnRight(90);
-        Forward(shiftDistance);
     }
 
     private void Scan360Degrees()

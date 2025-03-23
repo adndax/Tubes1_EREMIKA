@@ -20,12 +20,13 @@ public class Levi : Bot
     // method utama yang dijalankan selama bot aktif
     public override void Run()
     {
+        
         // warna 
-        BodyColor = Color.Red;
+        BodyColor = Color.Black;
         TurretColor = Color.Black;
-        RadarColor = Color.Black;
-        ScanColor = Color.Black;
-        BulletColor = Color.Red;
+        RadarColor = Color.Orange;
+        BulletColor = Color.Cyan;
+        ScanColor = Color.Cyan;
         
         // loop pergerakan utama yang berjalan selama bot aktif
         while (IsRunning)
