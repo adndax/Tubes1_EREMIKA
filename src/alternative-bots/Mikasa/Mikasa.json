@@ -2,12 +2,15 @@
   "name": "Mikasa",
   "version": "1.0",
   "authors": [
+    "Naomi Risaka", 
+    "Heleni Gratia",
     "Adinda Putri"
   ],
-  "description": "EREEEEEEHHHHHH!",
+  "description": "Maximizes damage by responding aggressively to collisions and firing with full power. Prioritizes high firepower upon detecting enemies to ensure maximum impact.",
   "homepage": "",
   "countryCodes": [
-    "id"
+    "jpn",
+    "idn"
   ],
   "platform": ".Net 8.0",
   "programmingLang": "C# 10.0"
