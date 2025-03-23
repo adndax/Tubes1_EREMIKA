@@ -95,21 +95,22 @@ java -jar robocode-tankroyale-gui-0.30.0.jar
 git clone https://github.com/adndax/Tubes1_EREMIKA/
 ```
 5. Konfigurasi Booter
-   a. Klik tombol "Config" pada aplikasi GUI
-   b. Pilih "Bot Root Directories"
-   c. Tambahkan direktori yang berisi folder bot dari repository EREMIKA, yaitu:
-- src/alternative-bots
-- src/main-bot
+1. Klik tombol **"Config"** pada aplikasi GUI
+2. Pilih **"Bot Root Directories"**
+3. Tambahkan direktori yang berisi folder bot dari repository **EREMIKA**, yaitu:
+   - `src/alternative-bots`
+   - `src/main-bot`
+
 6. Menjalankan Battle
-a. Klik tombol "Battle"
-b. Klik tombol "Start Battle"
-c. Pada panel konfigurasi permainan, pilih bot yang ingin dimainkan dari kotak kiri-atas
-d. Klik tombol "Boot →"
-e. Bot yang berhasil di-boot akan muncul di kotak kiri-bawah
-f. Pilih bot yang ingin ditambahkan ke permainan dari kotak kiri-bawah
-g. Klik tombol "Add →"
-h. Bot yang telah ditambahkan akan muncul di kotak kanan-bawah
-i. Mulai permainan dengan menekan tombol "Start Battle"
+1. Klik tombol **"Battle"**
+2. Klik tombol **"Start Battle"**
+3. Pada panel konfigurasi permainan, pilih bot yang ingin dimainkan dari kotak kiri-atas
+4. Klik tombol **"Boot →"**
+5. Bot yang berhasil di-boot akan muncul di kotak kiri-bawah
+6. Pilih bot yang ingin ditambahkan ke permainan dari kotak kiri-bawah
+7. Klik tombol **"Add →"**
+8. Bot yang telah ditambahkan akan muncul di kotak kanan-bawah
+9. Mulai permainan dengan menekan tombol **"Start Battle"**
 
 
 
