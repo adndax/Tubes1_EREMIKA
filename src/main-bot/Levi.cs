@@ -5,9 +5,6 @@ using Robocode.TankRoyale.BotApi.Events;
 
 public class Levi : Bot
 {
-    // arah putaran bot, dengan default 1, yaitu putaran searah jarum jam
-    int turnDirection = 1; 
-
     //  konstruktor untuk menginisialisasi bot dengan konfigurasi dan file Levi.json
     public Levi() : base(BotInfo.FromFile("Levi.json")) { }
 
@@ -81,7 +78,7 @@ public class Levi : Bot
         var bearing = BearingTo(x, y);
 
         // menghitung arah putaran bot berdasarkan nilai bearing
-        turnDirection = bearing >= 0 ? 1 : -1;
+        int turnDirection = bearing >= 0 ? 1 : -1;
 
         // memutar bot berdasarkan arah putaran
         TurnLeft(bearing);
