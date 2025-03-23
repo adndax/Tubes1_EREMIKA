@@ -14,21 +14,18 @@ using Robocode.TankRoyale.BotApi.Events;
 // -------------------------------------------------------------------
 
 // class MikasaBot sebagai subclass dari class Bot
-public class MikasaBot : Bot
+public class Mikasa : Bot
 {
     // arah putaran bot, dengan default 1, yaitu putaran searah jarum jam
     int turnDirection = 1; 
 
-    // jumlah iterasi dalam mode evasive maneuver (penghindaran)
-    int turnCounter = 0; 
-
     //  konstruktor untuk menginisialisasi bot dengan konfigurasi dan file MikasaBot.json
-    public MikasaBot() : base(BotInfo.FromFile("MikasaBot.json")) { }
+    public Mikasa() : base(BotInfo.FromFile("Mikasa.json")) { }
 
     // main method untuk memulai bot
     static void Main(string[] args)
     {
-        new MikasaBot().Start();
+        new Mikasa().Start();
     }
 
     // method utama yang dijalankan selama bot aktif

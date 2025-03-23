@@ -5,109 +5,107 @@ using Robocode.TankRoyale.BotApi.Events;
 
 public class Levi : Bot
 {
-    private const int BINS = 31;
-    private const double MAX_GUESS_FACTOR = 1.0;
-    private const double MIN_GUESS_FACTOR = -1.0;
-    private const double MAX_VELOCITY = 8.0;
-
-    private double[] guessFactorStats = new double[BINS];
-    private double lastEnemyX, lastEnemyY, lastEnemyVelocity;
-    private int stationaryCounter = 0;
-    private int moveDirection = 1;
     private Random random = new Random();
+    private bool moveRight = true;
+    private double moveDistance = 150;
+    private int moveCount = 0;
+    private int maxMoveCount = 5;
 
-    static void Main() => new Levi().Start();
+    static void Main()
+    {
+        new Levi().Start();
+    }
 
     Levi() : base(BotInfo.FromFile("Levi.json")) { }
 
     public override void Run()
     {
+        // Set warna
         BodyColor = Color.Black;
         TurretColor = Color.Black;
-        RadarColor = Color.White;
-        BulletColor = Color.Red;
-        ScanColor = Color.White;
+        RadarColor = Color.Orange;
+        BulletColor = Color.Cyan;
+        ScanColor = Color.Cyan;
 
+        // Pergi ke dinding terdekat
+        MoveToWall();
+
+        // Jalankan patrol dan scan terus menerus
         while (IsRunning)
         {
-            // Asynchronous continuous movement
-            MoveInWave();
+            if (moveRight)
+                Forward(moveDistance + random.Next(50));
+            else
+                Back(moveDistance + random.Next(50));
 
-            // Continuous radar scanning (non-blocking)
-            SetTurnRadarRight(360);
+            moveRight = !moveRight;
+            moveCount++;
 
-            Execute(); // Apply all asynchronous commands
+            if (moveCount >= maxMoveCount)
+            {
+                Forward(Math.Max(ArenaWidth, ArenaHeight));
+                TurnRight(90);
+                moveCount = 0;
+            }
+            // Lakukan scan 180 derajat secara terus menerus
+            Scan360Degrees();
         }
+    }
+
+    private void MoveToWall()
+    {
+        double angleToWall = Direction % 90;
+        TurnRight(angleToWall);
+        Forward(Math.Max(ArenaWidth, ArenaHeight));
+
+        // Posisikan turret agar siap melakukan scan
+        TurnGunRight(90);
+        TurnRight(90);
+    }
+
+     private void MoveAlongWall()
+    {
+        double shiftDistance = 200 + random.Next(100);
+        TurnRight(90);
+        Forward(shiftDistance);
+    }
+
+    private void Scan360Degrees()
+    {
+        TurnGunRight(360);
+    }
+
+
+    public override void OnHitBot(HitBotEvent e)
+    {
+        var bearing = BearingTo(e.X, e.Y);
+        TurnLeft(bearing);
+        double distance = DistanceTo(e.X, e.Y);
+        Back(100 + random.Next(50));
+        Fire(CalculateFirePower(distance));
     }
 
     public override void OnScannedBot(ScannedBotEvent e)
     {
-        double enemyX = e.X;
-        double enemyY = e.Y;
-        double enemyVelocity = e.Speed;
-        double enemyHeading = e.Direction;
-        double enemyDistance = DistanceTo(enemyX, enemyY);
+        double distance = DistanceTo(e.X, e.Y);
+        Fire(CalculateFirePower(distance));
 
-        if (enemyX == lastEnemyX && enemyY == lastEnemyY && enemyVelocity == 0)
-            stationaryCounter++;
-        else
-            stationaryCounter = 0;
-
-        if (stationaryCounter > 2) // Fire directly if stationary
+        if (distance < 150 && Energy > 50)
         {
-            SetFire(3.0);
+            Fire(3);
+            Fire(3);
         }
-        else
-        {
-            double lateralDirection = Math.Sign(enemyVelocity * Math.Sin(DegToRad(enemyHeading - Direction)));
-            double guessFactor = lateralDirection * (enemyVelocity / MAX_VELOCITY);
-
-            int index = (int)((guessFactor - MIN_GUESS_FACTOR) / (MAX_GUESS_FACTOR - MIN_GUESS_FACTOR) * (BINS - 1));
-            index = Math.Max(0, Math.Min(BINS - 1, index));
-            guessFactorStats[index]++;
-
-            int bestIndex = 0;
-            for (int i = 0; i < BINS; i++)
-            {
-                if (guessFactorStats[i] > guessFactorStats[bestIndex])
-                    bestIndex = i;
-            }
-
-            double fireGuessFactor = MIN_GUESS_FACTOR + ((double)bestIndex / (BINS - 1)) * (MAX_GUESS_FACTOR - MIN_GUESS_FACTOR);
-            double fireAngle = enemyHeading + fireGuessFactor * 30;
-            double absoluteFireAngle = Direction + fireAngle;
-
-            SetTurnGunRight(NormalizeBearing(absoluteFireAngle - GunDirection));
-
-            double firepower = Math.Min(3.0, 500 / enemyDistance);
-            SetFire(firepower);
-        }
-
-        lastEnemyX = enemyX;
-        lastEnemyY = enemyY;
-        lastEnemyVelocity = enemyVelocity;
-
-        Execute(); // Apply all set commands
+        Rescan();
     }
 
-    private void MoveInWave()
+    private double CalculateFirePower(double distance)
     {
-        if (random.Next(100) < 5)
-            moveDirection *= -1;
-
-        double angle = 30 * Math.Sin(Time / 20.0);
-        double distance = 50 * moveDirection;
-
-        SetTurnRight(angle);
-        SetForward(distance);
+        if (Energy < 20)
+            return 1;
+        if (distance < 200)
+            return 3;
+        if (distance < 500)
+            return 2;
+        return 1;
     }
-
-    private double NormalizeBearing(double angle)
-    {
-        while (angle > 180) angle -= 360;
-        while (angle < -180) angle += 360;
-        return angle;
-    }
-
-    private double DegToRad(double angle) => angle * Math.PI / 180.0;
 }
