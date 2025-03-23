@@ -75,33 +75,34 @@ lorem ipsum
 - Robocode C# API/Bridge
    
 ## Cara Menjalankan
-1. Clone Robocode Tank Royale Game Engine
+### 1. Clone Robocode Tank Royale Game Engine
 ```
 git clone https://github.com/Ariel-HS/tubes1-if2211-starter-pack.git
 ```
 
-2. Masuk ke dalam directory game engine, yaitu "tank-royale-0.30.0"
+### 2. Masuk ke dalam directory game engine, yaitu "tank-royale-0.30.0"
 ```
 cd tank-royale-0.30.0
 ```
 
-3. Jalankan file .jar aplikasi GUI
+### 3. Jalankan file .jar aplikasi GUI
 ```
 java -jar robocode-tankroyale-gui-0.30.0.jar
 ```
 
-4. Jalankan di terminal baru, clone repository EREMIKA
+### 4. Clone repository EREMIKA
+Di terminal baru, jalankan perintah berikut:
 ```
 git clone https://github.com/adndax/Tubes1_EREMIKA/
 ```
-5. Konfigurasi Booter
+### 5. Konfigurasi Booter
 1. Klik tombol **"Config"** pada aplikasi GUI
 2. Pilih **"Bot Root Directories"**
 3. Tambahkan direktori yang berisi folder bot dari repository **EREMIKA**, yaitu:
    - `src/alternative-bots`
    - `src/main-bot`
 
-6. Menjalankan Battle
+### 6. Menjalankan Battle
 1. Klik tombol **"Battle"**
 2. Klik tombol **"Start Battle"**
 3. Pada panel konfigurasi permainan, pilih bot yang ingin dimainkan dari kotak kiri-atas
