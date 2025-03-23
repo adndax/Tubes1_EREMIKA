@@ -2,12 +2,15 @@
   "name": "Armin",
   "version": "1.0",
   "authors": [
-    "Naomi Risaka"
+    "Naomi Risaka", 
+    "Heleni Gratia",
+    "Adinda Putri"
   ],
-  "description": "Armin bot goes helicopter helicopter then boom boom at enemies greedily.",
+  "description": "Fires continuously without considering accuracy, maximizing the number of shots. Always uses the highest firepower to maximize potential damage.",
   "homepage": "",
   "countryCodes": [
-    "id"
+    "jpn",
+    "idn"
   ],
   "platform": ".Net 8.0",
   "programmingLang": "C# 10.0"
