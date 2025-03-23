@@ -2,9 +2,11 @@
     "name": "Eren",
     "version": "1.0",
     "authors": [
-      "Heleni Gratia"
+      "Naomi Risaka", 
+      "Heleni Gratia",
+      "Adinda Putri"
     ],
-    "description": "So easy bruh, this is yeager's power! MWAHAHAHA",
+    "description": "Adapts firepower based on distance, prioritizing shot velocity for optimal impact. Avoids wall collisions by dynamically adjusting movement when near arena boundaries.",
     "homepage": "",
     "countryCodes": [
       "jpn",
