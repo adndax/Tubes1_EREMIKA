@@ -1,15 +1,16 @@
 {
-  "name": "Levi",
+  "name": "EREMIKA_Levi",
   "version": "1.0",
   "authors": [
     "Naomi Risaka", 
     "Heleni Gratia",
     "Adinda Putri"
   ],
-  "description": "Leviiii MWAHAHAHA",
+  "description": "Utilizes an aggressive greedy strategy, shooting while rotating when enemies are beyond 100 units and ramming them when closer. Adjusts firepower based on enemy energy to maximize damage efficiency.",
   "homepage": "",
   "countryCodes": [
-    "id"
+    "jpn",
+    "idn"
   ],
   "platform": ".Net 8.0",
   "programmingLang": "C# 10.0"
