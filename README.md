@@ -47,12 +47,6 @@ lorem ipsum
 │   │   │    ├── Eren.csproj
 │   │   │    ├── Eren.json
 │   │   │    └── Eren.sh
-│   │   ├── Levi
-│   │   │    ├── Levi.cmd
-│   │   │    ├── Levi.cs
-│   │   │    ├── Levi.csproj
-│   │   │    ├── Levi.json
-│   │   │    └── Levi.sh
 │   │   └── Mikasa
 │   │          ├── Mikasa.cmd
 │   │          ├── Mikasa.cs
