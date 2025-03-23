@@ -5,9 +5,6 @@ using Robocode.TankRoyale.BotApi.Events;
 
 public class Levi : Bot
 {
-    // arah putaran bot, dengan default 1, yaitu putaran searah jarum jam
-    int turnDirection = 1; 
-
     //  konstruktor untuk menginisialisasi bot dengan konfigurasi dan file Levi.json
     public Levi() : base(BotInfo.FromFile("Levi.json")) { }
 
@@ -20,12 +17,13 @@ public class Levi : Bot
     // method utama yang dijalankan selama bot aktif
     public override void Run()
     {
+        
         // warna 
-        BodyColor = Color.Red;
+        BodyColor = Color.Black;
         TurretColor = Color.Black;
-        RadarColor = Color.Black;
-        ScanColor = Color.Black;
-        BulletColor = Color.Red;
+        RadarColor = Color.Orange;
+        BulletColor = Color.Cyan;
+        ScanColor = Color.Cyan;
         
         // loop pergerakan utama yang berjalan selama bot aktif
         while (IsRunning)
@@ -80,7 +78,7 @@ public class Levi : Bot
         var bearing = BearingTo(x, y);
 
         // menghitung arah putaran bot berdasarkan nilai bearing
-        turnDirection = bearing >= 0 ? 1 : -1;
+        int turnDirection = bearing >= 0 ? 1 : -1;
 
         // memutar bot berdasarkan arah putaran
         TurnLeft(bearing);

@@ -32,11 +32,11 @@ public class Mikasa : Bot
     public override void Run()
     {
         // Set warna
-        BodyColor = Color.Black;
+        BodyColor = Color.Red;
         TurretColor = Color.Black;
-        RadarColor = Color.Orange;
-        BulletColor = Color.Cyan;
-        ScanColor = Color.Cyan;
+        RadarColor = Color.Black;
+        ScanColor = Color.Black;
+        BulletColor = Color.Red;
 
         // Pergi ke dinding terdekat
         MoveToWall();
@@ -58,7 +58,7 @@ public class Mikasa : Bot
                 TurnRight(90);
                 moveCount = 0;
             }
-            // Lakukan scan 180 derajat secara terus menerus
+            // Lakukan scan 360 derajat secara terus menerus
             Scan360Degrees();
         }
     }
@@ -67,18 +67,11 @@ public class Mikasa : Bot
     {
         double angleToWall = Direction % 90;
         TurnRight(angleToWall);
-        Forward(Math.Max(ArenaWidth, ArenaHeight));
+        Forward(Math.Max(ArenaWidth, ArenaHeight)); // pergi ke dinding terdekat
 
-        // Posisikan turret agar siap melakukan scan
+        // posisikan meriam agar siap menembak
         TurnGunRight(90);
         TurnRight(90);
-    }
-
-     private void MoveAlongWall()
-    {
-        double shiftDistance = 200 + random.Next(100);
-        TurnRight(90);
-        Forward(shiftDistance);
     }
 
     private void Scan360Degrees()
@@ -101,7 +94,7 @@ public class Mikasa : Bot
         double distance = DistanceTo(e.X, e.Y);
         Fire(CalculateFirePower(distance));
 
-        if (distance < 150 && Energy > 50)
+        if (distance < 150 && Energy > 50) 
         {
             Fire(3);
             Fire(3);
@@ -111,11 +104,11 @@ public class Mikasa : Bot
 
     private double CalculateFirePower(double distance)
     {
-        if (Energy < 20)
+        if (Energy < 20) // tembak dengan kekuatan rendah jika energi rendah
             return 1;
-        if (distance < 200)
-            return 3;
-        if (distance < 500)
+        if (distance < 200) // tembak dengan kekuatan maks utk jarak dekat
+            return 3; 
+        if (distance < 500) // tembak dengan kekuatan sedang utk jarak menengah
             return 2;
         return 1;
     }
