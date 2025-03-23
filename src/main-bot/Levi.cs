@@ -5,107 +5,85 @@ using Robocode.TankRoyale.BotApi.Events;
 
 public class Levi : Bot
 {
-    private Random random = new Random();
-    private bool moveRight = true;
-    private double moveDistance = 150;
-    private int moveCount = 0;
-    private int maxMoveCount = 5;
+    // arah putaran bot, dengan default 1, yaitu putaran searah jarum jam
+    int turnDirection = 1; 
 
-    static void Main()
+    //  konstruktor untuk menginisialisasi bot dengan konfigurasi dan file Levi.json
+    public Levi() : base(BotInfo.FromFile("Levi.json")) { }
+
+    // main method untuk memulai bot
+    static void Main(string[] args)
     {
         new Levi().Start();
     }
 
-    Levi() : base(BotInfo.FromFile("Levi.json")) { }
-
+    // method utama yang dijalankan selama bot aktif
     public override void Run()
     {
-        // Set warna
-        BodyColor = Color.Black;
+        // warna 
+        BodyColor = Color.Red;
         TurretColor = Color.Black;
-        RadarColor = Color.Orange;
-        BulletColor = Color.Cyan;
-        ScanColor = Color.Cyan;
-
-        // Pergi ke dinding terdekat
-        MoveToWall();
-
-        // Jalankan patrol dan scan terus menerus
+        RadarColor = Color.Black;
+        ScanColor = Color.Black;
+        BulletColor = Color.Red;
+        
+        // loop pergerakan utama yang berjalan selama bot aktif
         while (IsRunning)
         {
-            if (moveRight)
-                Forward(moveDistance + random.Next(50));
-            else
-                Back(moveDistance + random.Next(50));
-
-            moveRight = !moveRight;
-            moveCount++;
-
-            if (moveCount >= maxMoveCount)
-            {
-                Forward(Math.Max(ArenaWidth, ArenaHeight));
-                TurnRight(90);
-                moveCount = 0;
-            }
-            // Lakukan scan 180 derajat secara terus menerus
-            Scan360Degrees();
+            SetTurnLeft(10_000);
+            MaxSpeed = 5;
+            Forward(10_000);
         }
     }
 
-    private void MoveToWall()
-    {
-        double angleToWall = Direction % 90;
-        TurnRight(angleToWall);
-        Forward(Math.Max(ArenaWidth, ArenaHeight));
-
-        // Posisikan turret agar siap melakukan scan
-        TurnGunRight(90);
-        TurnRight(90);
-    }
-
-     private void MoveAlongWall()
-    {
-        double shiftDistance = 200 + random.Next(100);
-        TurnRight(90);
-        Forward(shiftDistance);
-    }
-
-    private void Scan360Degrees()
-    {
-        TurnGunRight(360);
-    }
-
-
-    public override void OnHitBot(HitBotEvent e)
-    {
-        var bearing = BearingTo(e.X, e.Y);
-        TurnLeft(bearing);
-        double distance = DistanceTo(e.X, e.Y);
-        Back(100 + random.Next(50));
-        Fire(CalculateFirePower(distance));
-    }
-
+    // method yang dijalankan ketika bot lain terdeteksi oleh radar
     public override void OnScannedBot(ScannedBotEvent e)
     {
+        // menghitung jarak dengan bot yang terdeteksi
         double distance = DistanceTo(e.X, e.Y);
-        Fire(CalculateFirePower(distance));
+        
+        // jika jarak kurang dari 100 unit, bot akan bergerak maju ke arah bot lawan
+        if (distance < 100)
+        {
+            TurnToFaceTarget(e.X, e.Y);
+            Forward(distance + 5);
+        }
 
-        if (distance < 150 && Energy > 50)
+        // jika jarak antara 100 dan 500 unit, bot akan menembak
+        else if (distance < 500)
         {
             Fire(3);
-            Fire(3);
         }
-        Rescan();
     }
 
-    private double CalculateFirePower(double distance)
+    // method yang dijalankan ketika bot bertabrakan dengan bot lain
+    public override void OnHitBot(HitBotEvent e)
     {
-        if (Energy < 20)
-            return 1;
-        if (distance < 200)
-            return 3;
-        if (distance < 500)
-            return 2;
-        return 1;
+        // mengarahkan bot ke arah bot yang tertabrak
+        TurnToFaceTarget(e.X, e.Y);
+        
+        // menembak berdasarkan energi bot yang tertabrak
+        if (e.Energy > 16)
+            Fire(3);
+        else if (e.Energy > 10)
+            Fire(2);
+        else if (e.Energy > 4)
+            Fire(1);
+        else if (e.Energy > 2)
+            Fire(.5);
     }
+
+    // method untuk memutar bot agar menghadap ke posisi bot lawan
+    private void TurnToFaceTarget(double x, double y)
+    {
+        // menghitung arah sudut untuk menghadap ke bot lawan
+        var bearing = BearingTo(x, y);
+
+        // menghitung arah putaran bot berdasarkan nilai bearing
+        turnDirection = bearing >= 0 ? 1 : -1;
+
+        // memutar bot berdasarkan arah putaran
+        TurnLeft(bearing);
+    }
+
 }
