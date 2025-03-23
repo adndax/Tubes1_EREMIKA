@@ -75,4 +75,25 @@ lorem ipsum
 - Robocode C# API/Bridge
    
 ## Cara Menjalankan
+1. Clone Robocode Tank Royale Game Engine
+```
+git clone https://github.com/Ariel-HS/tubes1-if2211-starter-pack.git
+```
+
+2. Masuk ke dalam directory "tank-royale-0.30.0"
+```
+cd tank-royale-0.30.0
+```
+
+3. (Clean &) Build gui-app dengan gradlew
+```
+./gradlew :gui-app:clean
+./gradlew :gui-app:build
+```
+
+4. Executable Jar akan dibuat pada directory gui-app/build/libs. Jalankan Jar dengan command berikut.
+```
+java -jar ./gui-app/build/libs/robocode-tankroyale-gui-0.30.0.jar
+```
+
 foto tampilan setelah berhasil
