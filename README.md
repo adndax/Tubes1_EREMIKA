@@ -80,20 +80,36 @@ lorem ipsum
 git clone https://github.com/Ariel-HS/tubes1-if2211-starter-pack.git
 ```
 
-2. Masuk ke dalam directory "tank-royale-0.30.0"
+2. Masuk ke dalam directory game engine, yaitu "tank-royale-0.30.0"
 ```
 cd tank-royale-0.30.0
 ```
 
-3. (Clean &) Build gui-app dengan gradlew
+3. Jalankan file .jar aplikasi GUI
 ```
-./gradlew :gui-app:clean
-./gradlew :gui-app:build
-```
-
-4. Executable Jar akan dibuat pada directory gui-app/build/libs. Jalankan Jar dengan command berikut.
-```
-java -jar ./gui-app/build/libs/robocode-tankroyale-gui-0.30.0.jar
+java -jar robocode-tankroyale-gui-0.30.0.jar
 ```
 
-foto tampilan setelah berhasil
+4. Jalankan di terminal baru, clone repository EREMIKA
+```
+git clone https://github.com/adndax/Tubes1_EREMIKA/
+```
+5. Konfigurasi Booter
+   a. Klik tombol "Config" pada aplikasi GUI
+   b. Pilih "Bot Root Directories"
+   c. Tambahkan direktori yang berisi folder bot dari repository EREMIKA, yaitu:
+- src/alternative-bots
+- src/main-bot
+6. Menjalankan Battle
+a. Klik tombol "Battle"
+b. Klik tombol "Start Battle"
+c. Pada panel konfigurasi permainan, pilih bot yang ingin dimainkan dari kotak kiri-atas
+d. Klik tombol "Boot →"
+e. Bot yang berhasil di-boot akan muncul di kotak kiri-bawah
+f. Pilih bot yang ingin ditambahkan ke permainan dari kotak kiri-bawah
+g. Klik tombol "Add →"
+h. Bot yang telah ditambahkan akan muncul di kotak kanan-bawah
+i. Mulai permainan dengan menekan tombol "Start Battle"
+
+
+
