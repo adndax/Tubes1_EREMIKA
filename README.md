@@ -32,7 +32,7 @@ Pada tugas besar 1 ini, kami mengembangkan empat bot untuk permainan Robocode Ta
 ## Struktur
 ```bash
 ├── doc
-│   └── Laporan_EREMIKA.pdf
+│   └── EREMIKA.pdf
 ├── src
 │   ├── alternative-bots
 │   │   ├── Armin
