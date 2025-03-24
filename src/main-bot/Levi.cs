@@ -4,9 +4,9 @@ using Robocode.TankRoyale.BotApi;
 using Robocode.TankRoyale.BotApi.Events;
 
 // -------------------------------------------------------------------
-// Levi
+// Levi Bot
 // -------------------------------------------------------------------
-// Levi adalah bot tempur untuk Robocode Tank Royale dengan 
+// Levi bot adalah bot tempur untuk Robocode Tank Royale dengan 
 // strategi greedy. Bot ini bergerak secara memutar untuk menghindari
 // tembakan musuh. Apabila lawan berada pada jarak yang cukup dekat,
 // bot akan menabrak dan menembak lawan dengan kekuatan yang
