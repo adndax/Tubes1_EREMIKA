@@ -7,10 +7,10 @@ using Robocode.TankRoyale.BotApi.Events;
 // Mikasa
 // -------------------------------------------------------------------
 // Mikasa adalah bot tempur untuk Robocode Tank Royale dengan 
-// strategi greedy. Bot ini bergerak secara memutar untuk menghindari
-// tembakan musuh. Apabila lawan berada pada jarak yang cukup dekat,
-// bot akan menabrak dan menembak lawan dengan kekuatan yang
-// disesuaikan dengan energi musuh.
+// strategi greedy. Bot ini bergerak kiri kanan pada dinding (wall)
+// yang memanfaatkan tabrakan dengan bot lawan untuk memaksimalkan serangan
+// Mikasa bot juga akan menembak dengan kekuataan terkuat ketika mendeteksi musuh
+// pada radarnya demi memaksimalkan kerusakan pada bot lawan.
 // -------------------------------------------------------------------
 
 // class Mikasa sebagai subclass dari class Bot
