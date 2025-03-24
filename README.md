@@ -14,16 +14,16 @@ Robocode Tank Royale adalah sebuah permainan simulasi robot berbasis Java. Dalam
 Pada tugas besar 1 ini, kami mengembangkan empat bot untuk permainan Robocode Tank Royale, masing-masing dengan algoritma greedy yang memiliki heuristik berbeda. Berikut adalah deskripsi singkat dari setiap bot:
 
 ### 1. Levi Bot
-
-lorem ipsum
+- Greedy by Shot Accuration: Levi bot berfokus pada akurasi tembakan, terutama ketika musuh berada pada jarak dekat. Bot ini akan menabrak dan menembak musuh dengan kekuatan peluru maksimal jika musuh berada pada jarak dengan tingkat akurasi tinggi.
+- Greedy by Enemy's Energy: Levi bot memprioritaskan untuk menyerang musuh berdasarkan energi yang tersisa pada musuh. Jika energi musuh tinggi, bot akan menyerang dengan kekuatan penuh untuk memaksimalkan damage yang diberikan. 
 
 ### 2. Eren Bot
 - Greedy by Avoiding Wall Collision: Eren bot akan memprioritaskan untuk menghindari tabrakan dengan dinding. Algoritma ini memungkinkan bot bergerak secara optimal untuk menghindari kerusakan yang disebabkan oleh tabrakan.
 - Greedy by Shot Velocity: Eren bot akan Eren bot akan menyesuaikan kecepatan dan kekuatan tembakan berdasarkan jarak musuh yang dipindai oleh radar. Bot ini berfokus pada kecepatan tembakan untuk memastikan bahwa tembakan mengenai target dengan efektif meskipun bot bergerak cepat.
 
 ### 3. Mikasa Bot
-- Greedy by Shot Accuration: Mikasa Bot berfokus pada akurasi tembakan, terutama ketika musuh berada pada jarak dekat. Bot ini akan menabrak dan menembak musuh dengan kekuatan peluru maksimal jika musuh berada pada jarak dengan tingkat akurasi tinggi.
-- Greedy by Enemy's Energy: Mikasa Bot memprioritaskan untuk menyerang musuh berdasarkan energi yang tersisa pada musuh. Jika energi musuh tinggi, bot akan menyerang dengan kekuatan penuh untuk memaksimalkan damage yang diberikan.
+- Greedy by Collision Response: Mikasa bot memanfaatkan tabrakan dengan bot lawan untuk memaksimalkan serangan. Bot ini merespons terhadap tabrakan dengan melakukan pergerakan mundur dan segera menembak lawan dengan kekuatan yang disesuaikan dengan jarak lawan terhadap diri sendiri.
+- Greedy by Enemy Detection: Mikasa bot akan menembak dengan kekuatan terkuat ketika mendeteksi musuh pada radarnya. Bot ini berfokus pada penyerangan dengan kekuatan maksimum demi memaksimalkan kerusakan pada bot lawan.
 
 ### 4. Armin Bot
 - Greedy by Shot Power: Armin bot akan memilih tembakan dengan daya yang besar tanpa memperhatikan akurasi. Bot ini selalu menembak musuh dengan peluru maksimal dengan harapan dapat memaksimalkan kerusakan pada bot musuh jika mengenai bot lawan.
